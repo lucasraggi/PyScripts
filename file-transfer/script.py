@@ -14,8 +14,8 @@ def extract_params(line):
 
 with open('input') as pacientes:
     count = 0
-    root_path = "E:/HOB/Pacientes - coleta Roberto/"
-    outpath = ['H:/',]
+    root_path = "E:/"
+    outpath = ['I:/', 'J:/']
     for line in pacientes:
         path_complement, patient_number, first_name, last_name = extract_params(line)
         path = root_path + path_complement
@@ -32,7 +32,9 @@ with open('input') as pacientes:
                 print(filename)
             if move:
                 origin_path = path + '/' + filename
-                shutil.copy(origin_path, destiny_path)
+                destiny_path = outpath[count] + '/' + path_complement + '/' + filename
+#                shutil.copy(origin_path, destiny_path)
+                print(origin_path, "|||||", destiny_path)
             if filename == last_name:
                 move = False
                 print(filename)
